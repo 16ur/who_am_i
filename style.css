@@ -1,0 +1,191 @@
+@font-face {
+    font-family: "VictorBase";
+    src: url("fonts/VictorMono/VictorMono-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Version italique */
+@font-face {
+    font-family: "VictorMono";
+    src: url("fonts/VictorMono/VictorMono-Italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+}
+
+body {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 18px;
+    background-color: #f3f6f4;
+    color: #1f1f1f;
+
+    /* how_to_center_a_div */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.card {
+    border: 1px solid #e7e7e7;
+    background-color: #eeeeee;
+    width: 100%;
+    max-width: 850px;
+    padding: 20px;
+    box-shadow: 3px 3px #1d202180;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-header a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-header a:hover {
+    text-decoration: underline;
+}
+
+/*display about me by default*/
+#me {
+    display: block;
+}
+
+/* hide others sections when on default */
+#friends,
+#contact {
+    display: none;
+}
+
+/* when we target a section, display it*/
+.section:target {
+    display: block;
+}
+
+.section {
+    margin: 0;
+}
+
+/* brute force display none for sections */
+#friends:target {
+    display: block;
+}
+
+#contact:target {
+    display: flex;
+}
+
+/* hide about me section when others sections are targetted*/
+.card:has(#friends:target, #contact:target) #me {
+    display: none;
+}
+
+.card:has(#friends:target, #contact:target) .me-pic {
+    display: none;
+}
+
+.card:has(#friends:target) a[href="#friends"] {
+    color: #006767;
+}
+
+.card:has(#me:target) a[href="#me"] {
+    color: #006767;
+}
+
+.card:has(#contact:target) a[href="#contact"] {
+    color: #006767;
+}
+
+a.card-title {
+    color: #006767;
+}
+
+.text-section {
+    display: flex;
+    height: 20vh;
+}
+
+.me-pic {
+    height: 100%;
+    padding-right: 10px;
+}
+
+.badges img {
+    width: 88px;
+    height: 31px;
+    image-rendering: pixelated;
+}
+
+.contact-section {
+    display: flex;
+    gap: 40px;
+}
+
+.contact-link a {
+    font-family: "VictorBase";
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-link a:hover {
+    color: #006767;
+}
+
+.contact-type a {
+    font-family: "VictorMono";
+    display: block;
+}
+
+.card-link {
+    display: flex;
+    gap: 16px;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background-color: #1d202180;
+    margin: 10px 0;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* do not underline badges */
+a img {
+}
+
+a:has(img) {
+    text-decoration: none;
+}
+
+
+@media (max-width: 815px) {
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .text-section {
+        height: auto;
+        min-height: 20vh;
+        display: block;
+        text-align: justify;
+    }
+}
+
+/* Encore plus petit (mobile) */
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+    }
+}
